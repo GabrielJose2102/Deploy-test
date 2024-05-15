@@ -35,5 +35,13 @@ app.use(express.json());
 app.use(indexRoutes);
 
 
+//public
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/src/public/css', (req, res, next) => {
+    res.setHeader('Content-Type', 'text/css');
+    next();
+  }, express.static(__dirname + '/public/css'));
+
+
 
 export default app;
