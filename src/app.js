@@ -6,7 +6,6 @@ import morgan from 'morgan';
 
 
 import indexRoutes from './routes/index.routes.js';
-import { ppid } from "process";
 
 const app = express();
 
