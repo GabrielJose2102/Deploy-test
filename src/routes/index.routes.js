@@ -1,9 +1,9 @@
 import express from "express";
 const router = express.Router();
-import pool from '../database.js';
+import pool from '../database2.js';
 import {promisify} from 'util';
 
-const query = promisify(pool.query).bind(pool);
+/* const query = promisify(pool.query).bind(pool); */
 
 
 router.get('/', (req, res)=>{
@@ -20,10 +20,16 @@ router.get('/signin', (req, res)=>{
 }); */
 
 
-router.get('/present', async (req, res)=>{
-    const usuario = await query('SELECT * FROM usuarios');
-    console.log(usuario);
-    res.render('present/present.hbs')
+router.get('/present', (req, res)=>{
+    pool.query('SELECT * FROM usuarios', (error, result, fields)=>{
+        if (error) {
+            console.log('Error al consultar Tabla usuarios');
+            return
+        }
+        console.log(result[0]);
+        res.render('present/present.hbs');
+    });
+    
 });
 
 
