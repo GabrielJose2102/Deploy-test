@@ -1,6 +1,6 @@
-import { PORT } from "./config.js";
+import { PORT } from "./config2.js";
 import app from './app.js';
-import pool from './database.js';
+import pool from './database2.js';
 import {promisify} from 'util';
 
 
